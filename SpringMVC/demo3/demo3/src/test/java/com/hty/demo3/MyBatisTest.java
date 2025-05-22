@@ -13,6 +13,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MyBatisTest {
 
@@ -66,4 +68,5 @@ public class MyBatisTest {
         User user = mapper.getUserByName("уехЩ");
         System.out.println(user);
     }
+
 }

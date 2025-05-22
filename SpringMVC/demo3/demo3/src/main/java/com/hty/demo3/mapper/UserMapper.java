@@ -1,6 +1,7 @@
 package com.hty.demo3.mapper;
 
 import com.hty.demo3.pojo.User;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -13,9 +14,9 @@ public interface UserMapper {
     void deleteUser();
     User getUserById();
     List<User> getAllUser();
-
     User getUserByName(String username);
 
+    User checkLoginByParam(@Param("username") String username, @Param("password") String password);
 
 
 }

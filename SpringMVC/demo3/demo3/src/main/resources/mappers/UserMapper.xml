@@ -32,9 +32,25 @@
     <select id="getAllUser" resultType="com.hty.demo3.pojo.User">
         select * from t_user
     </select>
-
 <!--    User getUserByName(String username);-->
     <select id="getUserByName" resultType="com.hty.demo3.pojo.User">
         select * from t_user where username=#{username}
     </select>
+<!--    User checkLogin(String username, String password);-->
+    <select id="checkLogin" resultType="com.hty.demo3.pojo.User">
+        select * from t_user where username=#{arg0} and password=#{arg1}
+    </select>
+
+    <select id="checkLoginByMap" resultType="com.hty.demo3.pojo.User">
+        select * from t_user where username=#{username} and password=#{password}
+    </select>
+
+<!--    User checkLoginByParam(@Param("username") String username, @Param("password") String password);-->
+    <select id="checkLoginByParam" resultType="com.hty.demo3.pojo.User">
+        select * from t_user where username=#{username} and password=#{password}
+    </select>
+
+    <insert id="insertUser">
+        insert into t_user values(null,#{username},#{password},#{age},#{sex},#{email})
+    </insert>
 </mapper>
