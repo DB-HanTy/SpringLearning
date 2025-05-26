@@ -34,5 +34,4 @@ public class RestMapTest {
         Dept dept = mapper.getDeptAndEmp(1);
         System.out.println(dept);
     }
-
 }
