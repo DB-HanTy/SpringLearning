@@ -44,7 +44,6 @@
 			<version>5.2.0</version>
 		</dependency>
 
-
 	</dependencies>
 	<!-- 控制Maven在构建过程中相关配置 -->
 	<build>
