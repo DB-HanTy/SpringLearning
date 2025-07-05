@@ -1,0 +1,28 @@
+---
+person:
+  name: 张三
+  age: 18
+  birthDay: 2010/10/10 12:12:12
+  like: true
+  child:
+    name: 李四
+    age: 20
+    #birthDay: 2018/10/10
+    birth-day: 2018/10/10
+    #text: ["abc","def"]
+    text:
+      - abc
+      - def
+  dogs:
+    - name: 小黑
+      age: 3
+    - name: 小白
+      age: 2
+  cats:
+    c1:
+     name: 小蓝
+     age: 3
+    c2: {name: 小绿,age: 2}
+---
+  server:
+    port: 9999
