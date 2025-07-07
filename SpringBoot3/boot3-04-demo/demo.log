@@ -1,0 +1,10 @@
+2025-07-07 14:30:28.048  INFO 12652 --- [boot3-04-demo] [main] com.hty.boot3.Boot304DemoApplication     : Starting Boot304DemoApplication using Java 22.0.1 with PID 12652 (C:\Users\33038\Desktop\SpringLearning\SpringBoot3\boot3-04-demo\target\classes started by 33038 in C:\Users\33038\Desktop\SpringLearning\SpringBoot3\boot3-04-demo)
+2025-07-07 14:30:28.049  INFO 12652 --- [boot3-04-demo] [main] com.hty.boot3.Boot304DemoApplication     : No active profile set, falling back to 1 default profile: "default"
+2025-07-07 14:30:28.513  INFO 12652 --- [boot3-04-demo] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-07-07 14:30:28.522  INFO 12652 --- [boot3-04-demo] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-07-07 14:30:28.523  INFO 12652 --- [boot3-04-demo] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.42]
+2025-07-07 14:30:28.551  INFO 12652 --- [boot3-04-demo] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-07-07 14:30:28.551  INFO 12652 --- [boot3-04-demo] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 477 ms
+2025-07-07 14:30:28.701  WARN 12652 --- [boot3-04-demo] [main] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2025-07-07 14:30:28.758  INFO 12652 --- [boot3-04-demo] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-07-07 14:30:28.763  INFO 12652 --- [boot3-04-demo] [main] com.hty.boot3.Boot304DemoApplication     : Started Boot304DemoApplication in 1.02 seconds (process running for 1.348)
