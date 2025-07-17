@@ -26,18 +26,18 @@ import java.util.concurrent.TimeUnit;
 //
 //}
 
-@Configuration //这是⼀个配置类,给容器中放⼀个 WebMvcConfigurer 组件，就能⾃定义底层
-public class MyConfig /*implements WebMvcConfigurer*/ {
-    @Bean
-    public WebMvcConfigurer webMvcConfigurer(){
-        return new WebMvcConfigurer() {
-            @Override
-            public void addResourceHandlers(ResourceHandlerRegistry registry)
-            {
-                registry.addResourceHandler("/static/**")
-                        .addResourceLocations("classpath:/a/", "classpath:/ b/")
-                                        .setCacheControl(CacheControl.maxAge(1180, TimeUnit.SECONDS));
-            }
-        };
-    }
-}
+//@Configuration //这是⼀个配置类,给容器中放⼀个 WebMvcConfigurer 组件，就能⾃定义底层
+//public class MyConfig /*implements WebMvcConfigurer*/ {
+//    @Bean
+//    public WebMvcConfigurer webMvcConfigurer(){
+//        return new WebMvcConfigurer() {
+//            @Override
+//            public void addResourceHandlers(ResourceHandlerRegistry registry)
+//            {
+//                registry.addResourceHandler("/static/**")
+//                        .addResourceLocations("classpath:/a/", "classpath:/ b/")
+//                                        .setCacheControl(CacheControl.maxAge(1180, TimeUnit.SECONDS));
+//            }
+//        };
+//    }
+//}
