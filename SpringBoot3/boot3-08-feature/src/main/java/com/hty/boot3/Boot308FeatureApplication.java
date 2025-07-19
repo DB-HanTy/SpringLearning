@@ -9,17 +9,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 public class Boot308FeatureApplication {
 
     public static void main(String[] args) {
-//        SpringApplication app = new SpringApplication(Boot308FeatureApplication.class);
-//
-//        app.setBannerMode(Banner.Mode.OFF);
-//
-//        app.run(args);
-
-        new SpringApplicationBuilder()
-                .main(Boot308FeatureApplication.class)
-                .bannerMode(Banner.Mode.CONSOLE)
-                .sources(Boot308FeatureApplication.class)
-                .run(args);
+        SpringApplication.run(Boot308FeatureApplication.class, args);
     }
 
 }
