@@ -6,7 +6,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
 @SpringBootApplication
-@MapperScan("com.hty.mp.mapper")
 public class MpDemo01Application {
 
 	public static void main(String[] args) {

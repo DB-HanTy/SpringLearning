@@ -8,3 +8,5 @@ spring:
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  type-aliases-package: com.hty.mp.pojo
+  type-enums-package: com.hty.mp.enums

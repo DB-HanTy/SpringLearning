@@ -4,7 +4,10 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.hty.mp.mapper.ProductMapper;
 import com.hty.mp.mapper.UserMapper;
+import com.hty.mp.pojo.Product;
 import com.hty.mp.pojo.User;
 import com.hty.mp.service.UserService;
 import org.junit.jupiter.api.Test;
@@ -29,17 +32,17 @@ public class DemoTest {
 //        User user = new User(null, "zhangsan", 23, "123@163.com");
 ////INSERT INTO user ( id, name, age, email ) VALUES ( ?, ?, ?, ? )
 //        int result = userMapper.insert(user);
-//        System.out.println("ÊÜÓ°ÏìĞĞÊı£º"+result);
+//        System.out.println("ï¿½ï¿½Ó°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"+result);
 ////1475754982694199298
-//        System.out.println("id×Ô¶¯»ñÈ¡£º"+user.getId());
+//        System.out.println("idï¿½Ô¶ï¿½ï¿½ï¿½È¡ï¿½ï¿½"+user.getId());
 //    }
 
     @Test
     public void testDeleteById(){
-//Í¨¹ıidÉ¾³ıÓÃ»§ĞÅÏ¢
+//Í¨ï¿½ï¿½idÉ¾ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½Ï¢
 //DELETE FROM user WHERE id=?
         int result = userMapper.deleteById(1947924937402339329L);
-        System.out.println("ÊÜÓ°ÏìĞĞÊı£º"+result);
+        System.out.println("ï¿½ï¿½Ó°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"+result);
     }
 
     @Autowired
@@ -48,7 +51,7 @@ public class DemoTest {
     @Test
     public void testSave(){
         long count = userService.count();
-        System.out.println("×Ü¼ÇÂ¼Êı£º"+count);
+        System.out.println("ï¿½Ü¼ï¿½Â¼ï¿½ï¿½ï¿½ï¿½"+count);
     }
 
     @Test
@@ -73,12 +76,12 @@ public class DemoTest {
     }
     @Test
     public void test09() {
-//¶¨Òå²éÑ¯Ìõ¼ş£¬ÓĞ¿ÉÄÜÎªnull£¨ÓÃ»§Î´ÊäÈë£©
+//ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğ¿ï¿½ï¿½ï¿½Îªnullï¿½ï¿½ï¿½Ã»ï¿½Î´ï¿½ï¿½ï¿½ë£©
         String username = "a";
         Integer ageBegin = 10;
         Integer ageEnd = 24;
         LambdaQueryWrapper<User> queryWrapper = new LambdaQueryWrapper<>();
-//±ÜÃâÊ¹ÓÃ×Ö·û´®±íÊ¾×Ö¶Î£¬·ÀÖ¹ÔËĞĞÊ±´íÎó
+//ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½Ö¶Î£ï¿½ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½
         queryWrapper
                 .like(StringUtils.isNotBlank(username), User::getName, username)
                 .ge(ageBegin != null, User::getAge, ageBegin)
@@ -89,15 +92,89 @@ public class DemoTest {
 
     @Test
     public void test10() {
-//×é×°set×Ó¾ä
+//ï¿½ï¿½×°setï¿½Ó¾ï¿½
         LambdaUpdateWrapper<User> updateWrapper = new LambdaUpdateWrapper<>();
         updateWrapper
                 .set(User::getAge, 18)
                 .set(User::getEmail, "user@atguigu.com")
                 .like(User::getName, "a")
-                .and(i -> i.lt(User::getAge, 24).or().isNull(User::getEmail)); //lambda±í´ïÊ½ÄÚµÄÂß¼­ÓÅÏÈÔËËã
+                .and(i -> i.lt(User::getAge, 24).or().isNull(User::getEmail)); //lambdaï¿½ï¿½ï¿½Ê½ï¿½Úµï¿½ï¿½ß¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         User user = new User();
         int result = userMapper.update(user, updateWrapper);
-        System.out.println("ÊÜÓ°ÏìµÄĞĞÊı£º" + result);
+        System.out.println("ï¿½ï¿½Ó°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" + result);
     }
+
+    @Test
+    public void test11(){
+        Page<User> page = new Page<>(1,3);
+        userMapper.selectPage(page,null);
+        System.out.println(page);
+    }
+
+    @Test
+    public void testPage(){
+//ï¿½ï¿½ï¿½Ã·ï¿½Ò³ï¿½ï¿½ï¿½ï¿½
+        Page<User> page = new Page<>(1, 5);
+        userMapper.selectPage(page, null);
+//ï¿½ï¿½È¡ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½
+        List<User> list = page.getRecords();
+        list.forEach(System.out::println);
+        System.out.println("ï¿½ï¿½Ç°Ò³ï¿½ï¿½"+page.getCurrent());
+        System.out.println("Ã¿Ò³ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"+page.getSize());
+        System.out.println("ï¿½Ü¼ï¿½Â¼ï¿½ï¿½ï¿½ï¿½"+page.getTotal());
+        System.out.println("ï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½"+page.getPages());
+        System.out.println("ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½Ò»Ò³ï¿½ï¿½"+page.hasPrevious());
+        System.out.println("ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½Ò»Ò³ï¿½ï¿½"+page.hasNext());
+    }
+    @Test
+    public void testPage2(){
+        Page<User> page = new Page<>(1, 3);
+        userMapper.selectPageVo(page,20);
+        System.out.println("å½“å‰é¡µï¼š"+page.getCurrent());
+        System.out.println("æ¯é¡µæ˜¾ç¤ºçš„æ¡æ•°ï¼š"+page.getSize());
+        System.out.println("æ€»è®°å½•æ•°ï¼š"+page.getTotal());
+        System.out.println("æ€»é¡µæ•°ï¼š"+page.getPages());
+        System.out.println("æ˜¯å¦æœ‰ä¸Šä¸€é¡µï¼š"+page.hasPrevious());
+        System.out.println("æ˜¯å¦æœ‰ä¸‹ä¸€é¡µï¼š"+page.hasNext());
+
+    }
+    @Autowired
+    private ProductMapper productMapper;
+    @Test
+    public void testConcurrentVersionUpdate() {
+//å°æå–æ•°æ®
+        Product p1 = productMapper.selectById(1L);
+//å°ç‹å–æ•°æ®
+        Product p2 = productMapper.selectById(1L);
+//å°æä¿®æ”¹ + 50
+        p1.setPrice(p1.getPrice() + 50);
+        int result1 = productMapper.updateById(p1);
+        System.out.println("å°æä¿®æ”¹çš„ç»“æœï¼š" + result1);
+//å°ç‹ä¿®æ”¹ - 30
+        p2.setPrice(p2.getPrice() - 30);
+        int result2 = productMapper.updateById(p2);
+        System.out.println("å°ç‹ä¿®æ”¹çš„ç»“æœï¼š" + result2);
+        if(result2 == 0){
+//å¤±è´¥é‡è¯•ï¼Œé‡æ–°è·å–versionå¹¶æ›´æ–°
+            p2 = productMapper.selectById(1L);
+            p2.setPrice(p2.getPrice() - 30);
+            result2 = productMapper.updateById(p2);
+        }
+        System.out.println("å°ç‹ä¿®æ”¹é‡è¯•çš„ç»“æœï¼š" + result2);
+//è€æ¿çœ‹ä»·æ ¼
+        Product p3 = productMapper.selectById(1L);
+        System.out.println("è€æ¿çœ‹ä»·æ ¼ï¼š" + p3.getPrice());
+    }
+
+//    @Test
+//    public void testSexEnum(){
+//        User user = new User();
+//        user.setName("Enum");
+//        user.setAge(20);
+////è®¾ç½®æ€§åˆ«ä¿¡æ¯ä¸ºæšä¸¾é¡¹ï¼Œä¼šå°†@EnumValueæ³¨è§£æ‰€æ ‡è¯†çš„å±æ€§å€¼å­˜å‚¨åˆ°æ•°æ®åº“
+//        user.setSex(SexEnum.MALE);
+////INSERT INTO t_user ( username, age, sex ) VALUES ( ?, ?, ? )
+////Parameters: Enum(String), 20(Integer), 1(Integer)
+//        userMapper.insert(user);
+//    }
 }
