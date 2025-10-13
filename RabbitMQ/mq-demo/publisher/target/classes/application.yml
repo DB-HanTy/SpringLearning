@@ -8,6 +8,3 @@ spring:
     virtual-host: /
     username: itcast
     password: 123321
-    listener:
-      simple:
-        prefetch: 1
