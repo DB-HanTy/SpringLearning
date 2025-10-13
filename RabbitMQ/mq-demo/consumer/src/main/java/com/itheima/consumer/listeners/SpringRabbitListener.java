@@ -2,13 +2,13 @@ package com.itheima.consumer.listeners;
 
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
-//½«µ±Ç°Àà·Åµ½SpringIOCÈİÆ÷ÖĞ
+//å°†å½“å‰ç±»æ”¾åˆ°SpringIOCå®¹å™¨ä¸­
 @Component
 public class SpringRabbitListener {
-    //¼àÌıÃû³Æsimple.queue¶ÓÁĞ£¬SpringÖ»Òª½ÓÊÕµ½¸Ã¶ÓÁĞµÄÏûÏ¢¾Í»á½ÓÊÕÏûÏ¢
+    //ç›‘å¬åç§°simple.queueé˜Ÿåˆ—ï¼ŒSpringåªè¦æ¥æ”¶åˆ°è¯¥é˜Ÿåˆ—çš„æ¶ˆæ¯å°±ä¼šæ¥æ”¶æ¶ˆæ¯
     @RabbitListener(queues = "simple.queue")
-    //Spring×Ô¶¯½«½ÓÊÕµÄÏûÏ¢¸ø·½·¨²ÎÊımsg
+    //Springè‡ªåŠ¨å°†æ¥æ”¶çš„æ¶ˆæ¯ç»™æ–¹æ³•å‚æ•°msg
     public void listenSimpleQueueMessage(String msg) throws InterruptedException {
-        System.out.println("spring Ïû·ÑÕß½ÓÊÕµ½ÏûÏ¢£º¡¾" + msg + "¡¿");
+        System.out.println("springæ¶ˆè´¹è€…æ”¶åˆ°simple.queueçš„æ¶ˆæ¯ï¼š{" + msg + "}");
     }
 }
