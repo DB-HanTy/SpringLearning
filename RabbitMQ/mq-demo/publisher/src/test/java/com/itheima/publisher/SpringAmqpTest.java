@@ -61,3 +61,5 @@ public class SpringAmqpTest {
         rabbitTemplate.convertAndSend("object.queue", msg);
     }
 }
+
+

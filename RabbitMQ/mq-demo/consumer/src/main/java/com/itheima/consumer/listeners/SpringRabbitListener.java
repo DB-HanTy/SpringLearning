@@ -1,3 +1,4 @@
+
 package com.itheima.consumer.listeners;
 
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
