@@ -10,3 +10,4 @@ spring:
     password: 123321
     listener:
       simple:
+        prefetch: 1

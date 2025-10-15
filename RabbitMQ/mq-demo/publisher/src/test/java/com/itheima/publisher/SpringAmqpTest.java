@@ -41,9 +41,9 @@ public class SpringAmqpTest {
 
     @Test
     void testSendDirect() {
-        String exchangeName = "hmall.direct";
-        String msg = "蓝色通知，警报解除，哥斯拉是放的气球";
-        rabbitTemplate.convertAndSend(exchangeName, "blue", msg);
+        String exchangeName = "itcast.direct";
+        String msg = "hello,red";
+        rabbitTemplate.convertAndSend(exchangeName, "red", msg);
     }
 
     @Test
