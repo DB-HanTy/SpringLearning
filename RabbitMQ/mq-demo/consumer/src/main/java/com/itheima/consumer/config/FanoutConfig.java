@@ -38,4 +38,10 @@ public class FanoutConfig {
                 .bind(fanoutQueue2)
                 .to(fanoutExchange);
     }
+
+    @Bean
+    public Queue objectMessageQueue(){
+        return new Queue("object.queue");
+    }
+
 }

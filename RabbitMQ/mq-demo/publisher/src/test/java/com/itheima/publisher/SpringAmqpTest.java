@@ -57,12 +57,15 @@ public class SpringAmqpTest {
     }
 
     @Test
-    void testSendObject() {
-        Map<String, Object> msg = new HashMap<>(2);
-        msg.put("name", "jack");
+    public void testSendMap() throws InterruptedException {
+        // 准备消息
+        Map<String,Object> msg = new HashMap<>();
+        msg.put("name", "Jack");
         msg.put("age", 21);
+        // 发送消息
         rabbitTemplate.convertAndSend("object.queue", msg);
     }
+
 }
 
 

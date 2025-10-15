@@ -9,6 +9,7 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalTime;
+import java.util.Map;
 
 //将当前类放到SpringIOC容器中
 @Component
@@ -76,4 +77,10 @@ public class SpringRabbitListener {
     public void listenTopicQueue2(String msg) {
         System.out.println("消费者接收到topic.queue2的消息：【" + msg + "】");
     }
+
+    @RabbitListener(queues = "object.queue")
+    public void listenObjectQueue(Map<String, Object> msg) {
+        System.out.println("收到消息：【" + msg + "】");
+    }
+
 }
