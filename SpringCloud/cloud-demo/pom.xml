@@ -12,7 +12,8 @@
 	<modules>
 		<module>services</module>
 		<module>services</module>
-	</modules>
+        <module>model</module>
+    </modules>
 	<groupId>com.hty</groupId>
 	<artifactId>cloud-demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
