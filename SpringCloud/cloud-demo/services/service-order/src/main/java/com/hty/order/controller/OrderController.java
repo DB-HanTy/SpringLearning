@@ -9,10 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class OrderController {
-
     @Autowired
     OrderService orderService;
-
     //创建订单
     @GetMapping("/create")
     public Order createOrder(@RequestParam("productId") Long productId,
