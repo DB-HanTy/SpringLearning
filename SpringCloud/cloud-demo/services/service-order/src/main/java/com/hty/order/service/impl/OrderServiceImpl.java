@@ -41,7 +41,7 @@ public class OrderServiceImpl implements OrderService {
         return order;
     }
 
-    //基于注解完成负载均衡发送请求
+    //完成负载均衡发送请求
     private Product getProductFromRemoteWithLoadBalancer(Long productId){
         //1、获取到商品服务所在的所有机器IP+port
         ServiceInstance choose = loadBalancerClient.choose("service-product");
@@ -53,7 +53,7 @@ public class OrderServiceImpl implements OrderService {
         return product;
     }
 
-    //完成负载均衡发送请求
+    //基于注解完成负载均衡发送请求
     private Product getProductFromRemoteWithLoadBalanceAnnotation(Long productId){
 
         String url = "http://service-product/product/" + productId;
