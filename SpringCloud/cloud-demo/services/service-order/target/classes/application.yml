@@ -1,0 +1,18 @@
+server:
+  port: 8000
+spring:
+  application:
+    name: service-order
+  cloud:
+    nacos:
+      server-addr: 127.0.0.1:8848
+      password: 123456
+      username: nacos
+      config:
+        namespace: dev
+
+
+  config:
+    import:
+      - nacos:common.properties?group=order
+      - nacos:database.properties?group=order
