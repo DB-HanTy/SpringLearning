@@ -1,6 +1,7 @@
 package com.hty.order.controller;
 
 import com.hty.order.bean.Order;
+import com.hty.order.properties.OrderProperties;
 import com.hty.order.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -9,21 +10,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-@RefreshScope//刷新配置
+//@RefreshScope//刷新配置
 @RestController
 public class OrderController {
     @Autowired
     OrderService orderService;
 
-    @Value("${order.timeout}")
-    String orderTimeout;
+    @Autowired
+    OrderProperties orderProperties;
 
-    @Value("${order.auto-confirm}")
-    String orderAutoConfirm;
 
     @GetMapping("/config")
     public String config(){
-        return "order.timeout="+orderTimeout+": order.auto-confirm="+orderAutoConfirm;
+        return "order.timeout="+orderProperties.getTimeout()+": order.auto-confirm="+orderProperties.getAutoConfirm();
     }
 
     //创建订单
