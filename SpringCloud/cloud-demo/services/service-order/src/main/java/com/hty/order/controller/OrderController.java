@@ -18,8 +18,6 @@ public class OrderController {
 
     @Autowired
     OrderProperties orderProperties;
-
-
     @GetMapping("/config")
     public String config(){
         return "order.timeout="+orderProperties.getTimeout()+": order.auto-confirm="+orderProperties.getAutoConfirm();
