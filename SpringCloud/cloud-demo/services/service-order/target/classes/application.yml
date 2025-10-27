@@ -9,10 +9,31 @@ spring:
       password: 123456
       username: nacos
       config:
-        namespace: dev
+        import-check:
+          enabled: false
+        namespace: ${spring.profiles.active:public}
 
-
+---
+spring:
   config:
     import:
       - nacos:common.properties?group=order
       - nacos:database.properties?group=order
+    activate:
+      on-profile: test
+---
+spring:
+  config:
+    import:
+      - nacos:common.properties?group=order
+      - nacos:database.properties?group=order
+    activate:
+      on-profile: prod
+---
+spring:
+  config:
+    import:
+      - nacos:common.properties?group=order
+      - nacos:database.properties?group=order
+    activate:
+      on-profile: dev

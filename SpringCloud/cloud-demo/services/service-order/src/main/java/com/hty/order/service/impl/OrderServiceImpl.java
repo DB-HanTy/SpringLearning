@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.hty.order.bean.Order;
+import com.hty.order.feign.ProductFeignClient;
 import com.hty.order.service.OrderService;
 import com.hty.product.bean.Product;
 import lombok.extern.slf4j.Slf4j;
@@ -27,9 +28,14 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     LoadBalancerClient loadBalancerClient;
 
+    @Autowired
+    ProductFeignClient productFeignClient;
+
     @Override
     public Order createOrder(Long productId, Long userId) {
-        Product product = getProductFromRemoteWithLoadBalanceAnnotation(productId);
+//        Product product = getProductFromRemoteWithLoadBalanceAnnotation(productId);
+        //使用Feign完成远程调用
+        Product product = productFeignClient.getProductById(productId);
         Order order = new Order();
         order.setId(1L);
         order.setTotalAmount(product.getPrice().multiply(new BigDecimal(product.getNum())));
