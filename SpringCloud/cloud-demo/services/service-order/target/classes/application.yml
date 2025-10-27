@@ -13,6 +13,10 @@ spring:
           enabled: false
         namespace: ${spring.profiles.active:public}
 
+logging:
+  level:
+    com.hty.order.feign: debug
+
 ---
 spring:
   config:

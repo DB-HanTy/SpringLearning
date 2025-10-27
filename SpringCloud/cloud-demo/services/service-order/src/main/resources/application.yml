@@ -1,39 +1,43 @@
-#server:
-#  port: 8000
-#spring:
-#  application:
-#    name: service-order
-#  cloud:
-#    nacos:
-#      server-addr: 127.0.0.1:8848
-#      password: 123456
-#      username: nacos
-#      config:
-#        import-check:
-#          enabled: false
-#        namespace: ${spring.profiles.active:public}
-#
-#---
-#spring:
-#  config:
-#    import:
-#      - nacos:common.properties?group=order
-#      - nacos:database.properties?group=order
-#    activate:
-#      on-profile: test
-#---
-#spring:
-#  config:
-#    import:
-#      - nacos:common.properties?group=order
-#      - nacos:database.properties?group=order
-#    activate:
-#      on-profile: prod
-#---
-#spring:
-#  config:
-#    import:
-#      - nacos:common.properties?group=order
-#      - nacos:database.properties?group=order
-#    activate:
-#      on-profile: dev
+server:
+  port: 8000
+spring:
+  application:
+    name: service-order
+  cloud:
+    nacos:
+      server-addr: 127.0.0.1:8848
+      password: 123456
+      username: nacos
+      config:
+        import-check:
+          enabled: false
+        namespace: ${spring.profiles.active:public}
+
+logging:
+  level:
+    com.hty.order.feign: debug
+
+---
+spring:
+  config:
+    import:
+      - nacos:common.properties?group=order
+      - nacos:database.properties?group=order
+    activate:
+      on-profile: test
+---
+spring:
+  config:
+    import:
+      - nacos:common.properties?group=order
+      - nacos:database.properties?group=order
+    activate:
+      on-profile: prod
+---
+spring:
+  config:
+    import:
+      - nacos:common.properties?group=order
+      - nacos:database.properties?group=order
+    activate:
+      on-profile: dev
