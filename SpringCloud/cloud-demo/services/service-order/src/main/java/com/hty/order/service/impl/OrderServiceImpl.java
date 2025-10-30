@@ -3,12 +3,14 @@ import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.hty.order.bean.Order;
 import com.hty.order.feign.ProductFeignClient;
 import com.hty.order.service.OrderService;
 import com.hty.product.bean.Product;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
@@ -29,8 +31,11 @@ public class OrderServiceImpl implements OrderService {
     LoadBalancerClient loadBalancerClient;
 
     @Autowired
-    ProductFeignClient productFeignClient;
+    private ProductFeignClient productFeignClient;
 
+
+
+    @SentinelResource(value = "createOrder")
     @Override
     public Order createOrder(Long productId, Long userId) {
 //        Product product = getProductFromRemoteWithLoadBalanceAnnotation(productId);

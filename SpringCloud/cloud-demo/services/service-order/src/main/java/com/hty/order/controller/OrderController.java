@@ -1,5 +1,6 @@
 package com.hty.order.controller;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.hty.order.bean.Order;
 import com.hty.order.properties.OrderProperties;
 import com.hty.order.service.OrderService;

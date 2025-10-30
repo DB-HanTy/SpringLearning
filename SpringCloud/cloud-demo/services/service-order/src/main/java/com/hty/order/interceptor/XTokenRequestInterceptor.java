@@ -1,4 +1,4 @@
-package com.hty.order;
+package com.hty.order.interceptor;
 
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import java.util.UUID;
 
 @Component
-public class interceptor implements RequestInterceptor {
+public class XTokenRequestInterceptor implements RequestInterceptor {
 
     /**
      * 请求拦截器

@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Bean;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
-@EnableFeignClients//开启Feign远程调用功能
+@EnableFeignClients(basePackages = "com.hty.order.feign")//开启Feign远程调用功能
 @EnableDiscoveryClient //开启服务发现功能
 @SpringBootApplication
 public class OrderMainApplication {

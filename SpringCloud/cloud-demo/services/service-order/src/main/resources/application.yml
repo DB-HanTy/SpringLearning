@@ -12,6 +12,10 @@ spring:
         import-check:
           enabled: false
         namespace: ${spring.profiles.active:public}
+    sentinel:
+      transport:
+        dashboard: localhost:8081
+      eager: true
 
 logging:
   level:
