@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
+import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.hty.order.bean.Order;
 import com.hty.order.feign.ProductFeignClient;
 import com.hty.order.service.OrderService;
@@ -35,7 +36,7 @@ public class OrderServiceImpl implements OrderService {
 
 
 
-    @SentinelResource(value = "createOrder")
+    @SentinelResource(value = "createOrder",blockHandler = "createOrderFallback")
     @Override
     public Order createOrder(Long productId, Long userId) {
 //        Product product = getProductFromRemoteWithLoadBalanceAnnotation(productId);
@@ -49,6 +50,17 @@ public class OrderServiceImpl implements OrderService {
         order.setAddress("hty");
         order.setProductList(Arrays.asList(product));
 
+        return order;
+    }
+
+    //兜底回调
+    public Order createOrderFallback(Long productId, Long userId, BlockException e){
+        Order order = new Order();
+        order.setId(0L);
+        order.setTotalAmount(new BigDecimal("0"));
+        order.setUserId(userId);
+        order.setNickName("未知用户");
+        order.setAddress("异常信息"+e.getClass());
         return order;
     }
 
