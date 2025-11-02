@@ -1,5 +1,6 @@
 package com.hty.order.feign;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.hty.order.feign.fallback.ProductFeignClientFallBack;
 import com.hty.product.bean.Product;
 import org.springframework.cloud.openfeign.FeignClient;

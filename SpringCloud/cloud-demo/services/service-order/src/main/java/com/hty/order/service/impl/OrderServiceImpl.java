@@ -11,7 +11,6 @@ import com.hty.order.service.OrderService;
 import com.hty.product.bean.Product;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
@@ -36,7 +35,7 @@ public class OrderServiceImpl implements OrderService {
 
 
 
-    @SentinelResource(value = "createOrder",blockHandler = "createOrderFallback")
+    @SentinelResource(value = "createOrder",blockHandler = "createOrderFallback",resourceType = 0)
     @Override
     public Order createOrder(Long productId, Long userId) {
 //        Product product = getProductFromRemoteWithLoadBalanceAnnotation(productId);
@@ -84,4 +83,5 @@ public class OrderServiceImpl implements OrderService {
         Product product = restTemplate.getForObject(url, Product.class);
         return product;
     }
+
 }

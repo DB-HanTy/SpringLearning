@@ -18,4 +18,4 @@ spring:
 
 feign:
   sentinel:
-    enabled: true
+    enabled: true  # 启用 Sentinel 对 OpenFeign 的支持
