@@ -1,6 +1,7 @@
 package com.hty.order.controller;
 
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
+import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.hty.order.bean.Order;
 import com.hty.order.properties.OrderProperties;
 import com.hty.order.service.OrderService;
@@ -31,6 +32,23 @@ public class OrderController {
     public Order createOrder(@RequestParam("productId") Long productId,
                              @RequestParam("userId") Long userId){
         Order order = orderService.createOrder(productId, userId);
+        return order;
+    }
+    @GetMapping("/seckill")
+    @SentinelResource(value = "seckill-order",fallback = "seckillFallback")
+    public  Order seckill(@RequestParam("productId") Long productId,
+                         @RequestParam("userId") Long userId){
+        Order order = orderService.createOrder(productId, userId);
+        order.setId(Long.MAX_VALUE);
+        return order;
+    }
+
+    public Order seckillFallback(Long productId, Long userId, BlockException exception){
+        System.out.println("seckillFallback...");
+        Order order = new Order();
+        order.setId(productId);
+        order.setUserId(userId);
+        order.setAddress("异常信息："+exception.getClass());
         return order;
     }
 }
