@@ -1,4 +1,6 @@
 spring:
+  profiles:
+    include: route
   application:
     name: gateway
   cloud:
