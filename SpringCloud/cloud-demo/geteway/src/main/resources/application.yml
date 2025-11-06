@@ -9,4 +9,4 @@ spring:
       password: 123456
       username: nacos
 server:
-  port: 8085
+  port: 80

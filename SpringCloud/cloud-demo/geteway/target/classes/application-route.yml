@@ -10,3 +10,7 @@ spring:
           uri: lb://service-product
           predicates:
             - Path=/api/product/**
+        - id: bing-route
+          uri: https://cn.bing.com
+          predicates:
+            - Path=/**
