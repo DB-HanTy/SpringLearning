@@ -43,7 +43,7 @@ public class OrderController {
         return order;
     }
 
-    public Order seckillFallback(Long productId, Long userId, BlockException exception){
+    public Order seckillFallback(Long productId, Long userId, Throwable exception){
         System.out.println("seckillFallback...");
         Order order = new Order();
         order.setId(productId);
