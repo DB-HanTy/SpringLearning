@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
-@RequestMapping("/api/product")
+//@RequestMapping("/api/product")
 @RestController
 public class ProductController {
     @Autowired

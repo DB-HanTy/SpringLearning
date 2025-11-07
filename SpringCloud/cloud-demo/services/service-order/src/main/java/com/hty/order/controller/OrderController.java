@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 //@RefreshScope//刷新配置
 @Slf4j
-@RequestMapping("/api/order")
+//@RequestMapping("/api/order")
 @RestController
 public class OrderController {
 
