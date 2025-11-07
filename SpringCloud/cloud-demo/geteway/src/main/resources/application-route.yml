@@ -2,15 +2,20 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: order-order
-          uri: lb://service-order
-          predicates:
-            - Path=/api/order/**
-        - id: product-route
-          uri: lb://service-product
-          predicates:
-            - Path=/api/product/**
         - id: bing-route
           uri: https://cn.bing.com
           predicates:
             - Path=/**
+        - id: order-route
+          uri: lb://service-order
+          predicates:
+            - name: Path
+              args:
+                patterns: /api/order/**
+                matchSingleSegment: true
+          order: 1
+        - id: product-route
+          uri: lb://service-product
+          predicates:
+            - Path=/api/product/**
+
