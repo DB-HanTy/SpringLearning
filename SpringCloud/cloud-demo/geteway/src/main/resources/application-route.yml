@@ -32,3 +32,5 @@ spring:
             - Path=/api/product/**
           filters:
             - RewritePath=/api/order/?(?<segment>.*), /$\{segment}
+      default-filters:
+        - RewritePath=/api/order/?(?<segment>.*), /$\{segment}
