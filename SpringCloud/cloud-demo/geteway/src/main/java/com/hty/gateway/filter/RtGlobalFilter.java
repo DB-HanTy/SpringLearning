@@ -35,5 +35,4 @@ public class RtGlobalFilter implements GlobalFilter {
         return 0;
     }
 
-
 }
