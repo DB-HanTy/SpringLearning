@@ -32,5 +32,7 @@ spring:
             - Path=/api/product/**
           filters:
             - RewritePath=/api/order/?(?<segment>.*), /$\{segment}
+            - OnceToken=X-Response-Token,uuid
       default-filters:
         - RewritePath=/api/order/?(?<segment>.*), /$\{segment}
+        - AddResponseHeader=X-Response-Abc,123

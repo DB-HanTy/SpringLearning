@@ -7,10 +7,14 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="model" />
-        <module name="service-order" />
+        <module name="seata-business" />
         <module name="service-product" />
+        <module name="seata-order" />
+        <module name="model" />
+        <module name="seata-account" />
+        <module name="service-order" />
         <module name="geteway" />
+        <module name="seata-storage" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -22,6 +26,10 @@
       <module name="cloud-demo" options="" />
       <module name="geteway" options="-parameters" />
       <module name="model" options="-parameters" />
+      <module name="seata-account" options="-parameters" />
+      <module name="seata-business" options="-parameters" />
+      <module name="seata-order" options="-parameters" />
+      <module name="seata-storage" options="-parameters" />
       <module name="service" options="" />
       <module name="service-order" options="-parameters" />
       <module name="service-product" options="-parameters" />

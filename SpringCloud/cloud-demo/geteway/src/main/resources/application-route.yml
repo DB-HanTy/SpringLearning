@@ -1,6 +1,12 @@
 spring:
   cloud:
     gateway:
+      global-filter:
+        cors-configuration:
+          '[/**]':
+            allowed-origin-patterns: '*'
+            allowed-headers: '*'
+            allowed-methods: '*'
       routes:
         - id: bing-route
           uri: https://cn.bing.com
