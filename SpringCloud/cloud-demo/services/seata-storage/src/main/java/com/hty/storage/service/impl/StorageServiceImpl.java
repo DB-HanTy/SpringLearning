@@ -14,7 +14,7 @@ public class StorageServiceImpl implements StorageService {
 
 
 
-    @Transactional
+    @Transactional// 开启事务
     @Override
     public void deduct(String commodityCode, int count) {
         storageTblMapper.deduct(commodityCode, count);
