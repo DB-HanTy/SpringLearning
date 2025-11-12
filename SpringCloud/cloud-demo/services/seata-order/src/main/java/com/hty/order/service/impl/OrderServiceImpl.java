@@ -37,7 +37,7 @@ public class OrderServiceImpl implements OrderService {
         //3、保存订单
         orderTblMapper.insert(orderTbl);
 
-//        int i = 10/0;
+        int i = 10/0;
 
         return orderTbl;
     }
