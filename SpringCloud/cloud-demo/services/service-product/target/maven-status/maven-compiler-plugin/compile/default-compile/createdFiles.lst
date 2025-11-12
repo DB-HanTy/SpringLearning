@@ -1,0 +1,5 @@
+com\hty\product\service\ProductService.class
+com\hty\product\config\ProductServiceConfig.class
+com\hty\product\controller\ProductController.class
+com\hty\product\service\impl\ProductServiceImpl.class
+com\hty\product\ProductMainApplication.class
